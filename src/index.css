@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Michroma&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 4%;
+    --foreground: 0 0% 100%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Neon Cyan */
+    --primary: 190 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    /* Neon Purple */
+    --accent: 280 100% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --secondary: 240 10% 12%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 240 5% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 190 50% 15%;
+    --input: 190 50% 15%;
+    --ring: 190 100% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 240 10% 6%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 190 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 240 10% 12%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 190 50% 15%;
+    --sidebar-ring: 190 100% 50%;
+
+    /* Custom tokens */
+    --glass-bg: 0 0% 100% / 0.02;
+    --glass-border: 190 100% 50% / 0.15;
+    --gradient-primary: linear-gradient(135deg, hsl(190 100% 50%), hsl(280 100% 60%));
+    --gradient-glow: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), hsl(190 100% 50% / 0.15), transparent 40%);
+    --text-gradient: linear-gradient(135deg, hsl(0 0% 100%), hsl(190 50% 80%));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-color: hsl(240 10% 4%);
+    background-image: 
+      /* Animated glowing orbs */
+      radial-gradient(circle at 10% 20%, hsla(190, 100%, 50%, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, hsla(280, 100%, 60%, 0.05) 0%, transparent 40%),
+      /* Cyberpunk Grid Overlay */
+      linear-gradient(to right, hsla(190, 100%, 50%, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, hsla(190, 100%, 50%, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+    background-attachment: fixed;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+    border-left: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 hover:bg-primary/60 transition-colors shadow-[0_0_10px_hsl(var(--primary)_/_0.5)];
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/[0.01] backdrop-blur-xl border border-primary/20 shadow-[0_0_15px_hsl(var(--primary)_/_0.05)];
+  }
+
+  .glass-card {
+    @apply bg-white/[0.01] backdrop-blur-lg border border-primary/20 hover:bg-white/[0.03] transition-all duration-300 shadow-[inset_0_0_20px_hsl(190_100%_50%_/_0.05)];
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px hsl(190 100% 50% / 0.3);
+  }
+
+  .gradient-border-glow {
+    @apply relative overflow-hidden;
+  }
+
+  .gradient-border-glow::after {
+    content: "";
+    @apply absolute inset-0 rounded-[inherit] p-[1px] bg-gradient-to-r from-primary via-accent to-primary -z-10 opacity-30 group-hover:opacity-100 transition-opacity duration-500 animate-[bg-pan_3s_linear_infinite];
+    background-size: 200% auto;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
+
+  .glow {
+    box-shadow: 0 0 20px hsl(190 100% 50% / 0.4), inset 0 0 10px hsl(190 100% 50% / 0.2);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 10px hsl(190 100% 50%), 0 0 20px hsl(190 100% 50% / 0.5);
+  }
+
+  .section-padding {
+    @apply px-4 py-24 md:py-32 lg:px-0;
+  }
+
+  .neo-blur {
+    backdrop-filter: blur(12px) saturate(180%);
+    background-color: rgba(5, 5, 8, 0.7);
+  }
+  
+  .sci-fi-button {
+    @apply relative overflow-hidden border border-primary text-primary font-bold uppercase tracking-widest bg-transparent transition-all duration-300 hover:bg-primary/10 hover:shadow-[0_0_20px_hsl(190_100%_50%_/_0.5)];
+  }
+  
+  .sci-fi-button::before {
+    content: "";
+    @apply absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-primary/30 to-transparent transition-all duration-500;
+  }
+  
+  .sci-fi-button:hover::before {
+    left: 100%;
+  }
+
+  .sci-fi-box {
+    @apply relative bg-background border border-primary/30 p-4 transition-all duration-300;
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+  }
+  
+  .sci-fi-box:hover {
+    @apply border-primary shadow-[0_0_15px_hsl(var(--primary)_/_0.3)];
+  }
+}
+
+@keyframes float-slow {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes bg-pan {
+  0% { background-position: 0% center; }
+  100% { background-position: -200% center; }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
