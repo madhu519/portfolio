@@ -26,7 +26,7 @@ const AboutSection = () => {
     },
     {
       institution: "Ravindra Bharathi School",
-      location: "Vizag, Andhra Pradesh",
+      location: "Pathapatnam, Andhra Pradesh",
       degree: "Matriculation",
       grade: "CGPA: 98.0",
       duration: "June 2020 – April 2021"
@@ -36,7 +36,7 @@ const AboutSection = () => {
   return (
     <section id="about" className="section-padding relative overflow-hidden" ref={ref}>
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-10" />
-      
+
       {/* 3D Context */}
       <Suspense fallback={null}>
         <SectionDecorator variant="left" />
@@ -56,7 +56,7 @@ const AboutSection = () => {
               Academic <span className="gradient-text">Excellence</span> & Goals
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
-              Building a strong foundation through comprehensive computer science studies 
+              Building a strong foundation through comprehensive computer science studies
               and technical achievements across multiple institutions.
             </p>
           </motion.div>
@@ -76,7 +76,7 @@ const AboutSection = () => {
               </div>
               <h3 className="font-display text-2xl font-bold">Education</h3>
             </div>
-            
+
             <div className="space-y-12">
               {education.map((edu, idx) => (
                 <div key={idx} className="relative group/item">
@@ -89,11 +89,11 @@ const AboutSection = () => {
                         {edu.degree}
                       </div>
                       <p className="text-muted-foreground text-sm flex items-center gap-2">
-                         <MapPin size={14} className="opacity-50" /> {edu.location}
+                        <MapPin size={14} className="opacity-50" /> {edu.location}
                       </p>
                     </div>
                     <div className="md:text-right flex flex-col items-start md:items-end gap-2">
-                       <div className="flex items-center gap-2 text-xs font-bold text-muted-foreground bg-white/5 border border-white/5 px-3 py-1 rounded-full uppercase tracking-widest whitespace-nowrap">
+                      <div className="flex items-center gap-2 text-xs font-bold text-muted-foreground bg-white/5 border border-white/5 px-3 py-1 rounded-full uppercase tracking-widest whitespace-nowrap">
                         <Calendar size={12} /> {edu.duration}
                       </div>
                       <span className="text-sm font-bold text-accent px-4 py-1.5 rounded-lg bg-accent/5 border border-accent/10 glow-text">
@@ -119,10 +119,10 @@ const AboutSection = () => {
               </div>
               <h3 className="font-display text-2xl font-bold mb-4">Career Goal</h3>
               <p className="text-muted-foreground leading-relaxed text-sm mb-8">
-                Focused on building intelligent AI systems, mastering deep learning architectures, 
+                Focused on building intelligent AI systems, mastering deep learning architectures,
                 and creating impactful solutions using Python and modern ML frameworks.
               </p>
-              
+
               <div className="w-full space-y-4 pt-6 border-t border-white/5">
                 <div className="flex items-center gap-3 text-xs font-bold text-muted-foreground justify-center">
                   <Award size={14} className="text-primary" /> AI & ML Focus
